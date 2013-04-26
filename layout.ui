@@ -42,7 +42,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>開啟文字檔</string>
+    <string>open</string>
    </property>
   </widget>
   <widget class="QPushButton" name="output_button">
@@ -55,7 +55,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>輸出文字檔</string>
+    <string>save result</string>
    </property>
   </widget>
   <widget class="QPushButton" name="clear_button">
@@ -68,7 +68,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>清除畫布</string>
+    <string>clear</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Run_button">
@@ -89,12 +89,12 @@
     <rect>
      <x>670</x>
      <y>30</y>
-     <width>141</width>
+     <width>180</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>mouse_location</string>
+    <string>mouse location</string>
    </property>
   </widget>
   <widget class="QStackedWidget" name="canvas">
@@ -143,12 +143,12 @@
     <rect>
      <x>670</x>
      <y>10</y>
-     <width>66</width>
+     <width>101</width>
      <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>滑鼠位置</string>
+    <string>mouse location</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -156,12 +156,12 @@
     <rect>
      <x>670</x>
      <y>80</y>
-     <width>66</width>
+     <width>150</width>
      <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>點個數</string>
+    <string>number of points</string>
    </property>
   </widget>
   <widget class="QLabel" name="point_num">
@@ -193,7 +193,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>讀入下一筆資料</string>
+    <string>next input</string>
    </property>
   </widget>
   <widget class="QPushButton" name="reload_output">
@@ -206,7 +206,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>讀取輸出檔案</string>
+    <string>reload ouput</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -219,7 +219,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>輸入的點座標</string>
+    <string>points</string>
    </property>
   </widget>
   <widget class="QScrollArea" name="output_area">
@@ -255,7 +255,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>程式輸出</string>
+    <string>output</string>
    </property>
   </widget>
  </widget>
