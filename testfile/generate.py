@@ -3,7 +3,7 @@ class Point(object):
     def __init__(self,x,y):
         self.x = x
         self.y = y
-    def __equal__(self,other):
+    def __eq__(self,other):
         return self.x ==  other.x and self.y == other.y
     def __hash__(self):
         return 41*self.x+self.y
