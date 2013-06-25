@@ -15,5 +15,6 @@ python main.py
 ```
 
 And you will see a user-friendly interface.You can load the input files which can be generated from 
-```testfile/generate.py```.
+`testfile/generate.py`.
 
+/home/mht/voronoi.png
