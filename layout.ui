@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>PyVoronoi</string>
   </property>
   <widget class="QPushButton" name="step_button">
    <property name="geometry">

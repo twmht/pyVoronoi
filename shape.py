@@ -3,7 +3,7 @@
 #Name: Ming-Hsuan Tu
 from __future__ import division
 class Point:
-    def __init__(self,x,y,avail = True):
+    def __init__(self,x,y):
         self.x = x
         self.y = y
 

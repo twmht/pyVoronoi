@@ -1,5 +1,6 @@
 *.py[cod]
 testfile/input_*
+testfile/output_*
 
 # C extensions
 *.so
