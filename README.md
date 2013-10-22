@@ -16,3 +16,8 @@ python main.py
 
 And you will see a user-friendly interface.You can load the input files which can be generated from 
 `testfile/generate.py`.
+
+
+####Support step by step
+
+![step by step](/images/step-by-step.gif "Step by step")
