@@ -14,8 +14,8 @@ class Point:
 
         self.related = []
 
-        self.display = str((int(self.x)))+" "+str((int(self.y)))
-
+    def __repr__(self):
+        return str((int(self.x)))+" "+str((int(self.y)))
     def __add__(self,other):
         return Point(self.x+other.x,self.y+other.y)
     def __sub__(self,other):
@@ -43,18 +43,19 @@ class Line:
         #which two point contribute to  the biSector
         self._p1 = None
         self._p2 = None
-        self.display = self.p1.display+" "+self.p2.display
+
         self.hole = None
 
         self.connected = []
         self.avail = True
+    def __repr__(self):
+        return repr(self.p1)+" "+repr(self.p2)
+
     def __setattr__(self, name, value):
         if not name in self.__dict__:
             self.__dict__[name] = value
         elif name == 'p1' or name == 'p2':
             self.__dict__[name] = value
-            self.display = self.p1.display+" "+self.p2.display
-
         else:
             self.__dict__[name] = value
     @staticmethod

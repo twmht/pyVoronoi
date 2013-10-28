@@ -1,15 +1,4 @@
-#$LAN=Python$
 # -*- coding: utf-8 -*-
-################
-#Voronoi Diagram
-#版權宣告
-#中山大學資訊工程所資料庫系統實驗室F5023
-#email:tumh@db.cse.nsysu.edu.tw
-#Designer:
-#學號: M013040008
-#姓名: 杜明軒
-#Name: Ming-Hsuan Tu
-################
 from shape import Point,Line
 from PyQt4 import QtGui, QtCore
 from collections import defaultdict
@@ -90,7 +79,7 @@ class IOData:
         f = open('point_output','w')
         f.write(str(len(self.painter._points))+'\n')
         for p in self.painter._points:
-            f.write(str(p.display)+'\n')
+            f.write(p+'\n')
 
         f.write('0\n')
 
@@ -159,7 +148,7 @@ class drawDisplay:
         self.painter = painter
 
     def display_points(self,p):
-        info = self.painter.parent.data_info.text()+"P "+p.display+"\n"
+        info = self.painter.parent.data_info.text()+"P "+repr(p)+"\n"
         self.painter.parent.data_info.setText(info)
         self.painter.parent.point_num.setText(str(len(self.painter._points)))
 
@@ -180,10 +169,10 @@ class drawDisplay:
 
         self.painter._points.sort(key = attrgetter('x','y'))
         for point in self.painter._points:
-            info = info+"P "+point.display+"\n"
+            info = info+"P "+repr(point)+"\n"
 
         for line in output_lines:
-            info = info +"E "+line.display+"\n"
+            info = info +"E "+repr(line)+"\n"
 
         self.painter.parent.output_info.setText(info)
 
@@ -280,11 +269,6 @@ class drawDisplay:
                         qp.drawLine(l.p1.x,l.p1.y,l.p2.x,l.p2.y)
                 self.painter.tangent[1] = self.painter.tangent[1]+1
 
-                #m = self.painter.debug_message[1]
-                #msg = self.painter.debug_message[0][m]
-                #print msg
-                #self.painter.debug_message[1] = self.painter.debug_message[1]+1
-
                 pen.setColor(QtCore.Qt.darkMagenta)
                 qp.setPen(pen)
                 w = self.painter.hp[1]
@@ -292,10 +276,6 @@ class drawDisplay:
                 for l in hp:
                     qp.drawLine(l.p1.x,l.p1.y,l.p2.x,l.p2.y)
                 self.painter.hp[1] = self.painter.hp[1]+1
-
-
-
-
 
 
     def ClearCanvas(self):
