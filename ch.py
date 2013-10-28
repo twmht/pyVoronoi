@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-#Designer:
-#Name: Ming-Hsuan Tu
 
 class ConvexHull:
     def __init__(self,vd):

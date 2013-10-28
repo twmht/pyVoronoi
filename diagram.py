@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-#Designer:
-#Name: Ming-Hsuan Tu
+
 from shape import Line,Point
 from ch import ConvexHull
 from collections import defaultdict

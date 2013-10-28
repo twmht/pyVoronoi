@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-#Designer:
-#Name: Ming-Hsuan Tu
+
 from __future__ import division
 from collections import defaultdict
 from operator import attrgetter
