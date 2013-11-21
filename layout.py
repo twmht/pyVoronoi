@@ -10,6 +10,7 @@ from show import IOData,drawDisplay,traverse
 from pointToLine import pair
 import copy
 import time
+import threading
 
 def savevd(lines,range_points,self,convex):
     line = []
@@ -20,6 +21,13 @@ def savevd(lines,range_points,self,convex):
         t.avail = l.avail
         line.append(t)
     return VD(line,range_points,self,convex = convex)
+
+class runVoronoi(threading.Thread):
+    def __init__(self,callback):
+        threading.Thread.__init__(self)
+        self.callback = callback
+    def run(self):
+        self.callback()
 
 class Canvas(QtGui.QWidget):
     edge_painter = (Line(Point(0,0),Point(610,0)),Line(Point(0,0),Point(0,610)),Line(Point(610,0),Point(610,610)),Line(Point(0,610),Point(610,610)))
@@ -204,29 +212,34 @@ class Canvas(QtGui.QWidget):
         self.points.sort(key= attrgetter('x','y'))
 
     def Run(self):
-        if self.isstep_by_step == False:
-            self.prepare()
-            ans = self.Voronoi((0,len(self.points)-1))
-            Line.intersect_with_edge(ans.lines,Canvas.edge_painter)
-            self.lines = ans.lines
-            self.vertex = ans.convex.vertex
-            self.drawDisplay.display_output()
-            self.update()
-        else:
-            #current state is step_by_step, switch to run all vd
-            while True:
-                self.parent.step_button.setEnabled(False)
-                self.repaint()
-                if self.vd[1] == len(self.vd[0])-1:
-                    self.drawDisplay.display_output()
-                time.sleep(1)
-                self.vd[1] = self.vd[1]+1
-                if self.vd[1]  >= len(self.vd[0]):
-                    break
+        def run():
+            if self.isstep_by_step == False:
+                self.prepare()
+                ans = self.Voronoi((0,len(self.points)-1))
+                Line.intersect_with_edge(ans.lines,Canvas.edge_painter)
+                self.lines = ans.lines
+                self.vertex = ans.convex.vertex
+                self.drawDisplay.display_output()
+            else:
+                #current state is step_by_step, switch to run all vd
+                while True:
+                    self.parent.step_button.setEnabled(False)
+                    self.repaint()
+                    if self.vd[1] == len(self.vd[0])-1:
+                        self.drawDisplay.display_output()
+                    time.sleep(1)
+                    self.vd[1] = self.vd[1]+1
+                    if self.vd[1]  >= len(self.vd[0]):
+                        break
 
-            self.vd = [[],0]
-            self.hp = [[],0]
-            self.isstep_by_step = False
+                self.vd = [[],0]
+                self.hp = [[],0]
+                self.isstep_by_step = False
+        thread = runVoronoi(run)
+        thread.start()
+        threading.Thread.join(thread)
+        self.parent.Run_button.setEnabled(True)
+        self.update()
 
     def step_by_step(self):
         self.parent.step_button.setEnabled(True)

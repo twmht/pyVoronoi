@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-#Designer:
-#Name: Ming-Hsuan Tu
 from PyQt4 import QtGui, QtCore, uic
 from layout import Canvas
 import sys
