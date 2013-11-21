@@ -224,7 +224,7 @@ class Canvas(QtGui.QWidget):
                 #current state is step_by_step, switch to run all vd
                 while True:
                     self.parent.step_button.setEnabled(False)
-                    self.repaint()
+                    #self.repaint()
                     if self.vd[1] == len(self.vd[0])-1:
                         self.drawDisplay.display_output()
                     time.sleep(1)
@@ -237,6 +237,9 @@ class Canvas(QtGui.QWidget):
                 self.isstep_by_step = False
         thread = runVoronoi(run)
         thread.start()
+        self.parent.Run_button.setEnabled(False)
+        self.repaint()
+        QtGui.QApplication.processEvents()
         threading.Thread.join(thread)
         self.parent.Run_button.setEnabled(True)
         self.update()
