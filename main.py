@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-#Designer:
-#Name: Ming-Hsuan Tu
 from PyQt4 import QtGui, QtCore, uic
 from layout import Canvas
 import sys
@@ -23,16 +21,14 @@ class CreateLayout(base,form):
         self.Establish_Connections()
 
     def Establish_Connections(self):
-        QtCore.QObject.connect(self.Run_button, QtCore.SIGNAL("clicked()"),self.PaintPanel.Run)
-        QtCore.QObject.connect(self.clear_button, QtCore.SIGNAL("clicked()"),self.PaintPanel.drawDisplay.ClearCanvas)
-        QtCore.QObject.connect(self.open_button, QtCore.SIGNAL("clicked()"),self.PaintPanel.IOData.ReadFile)
-        QtCore.QObject.connect(self.next_data, QtCore.SIGNAL("clicked()"),self.PaintPanel.IOData.next_data)
-        QtCore.QObject.connect(self.step_button, QtCore.SIGNAL("clicked()"),self.PaintPanel.step_by_step)
-        QtCore.QObject.connect(self.output_button, QtCore.SIGNAL("clicked()"),self.PaintPanel.IOData.output_data)
-        QtCore.QObject.connect(self.reload_output, QtCore.SIGNAL("clicked()"),self.PaintPanel.IOData.read_output)
+        self.Run_button.clicked.connect(self.PaintPanel.Run)
+        self.clear_button.clicked.connect(self.PaintPanel.drawDisplay.ClearCanvas)
+        self.open_button.clicked.connect(self.PaintPanel.IOData.ReadFile)
+        self.next_data.clicked.connect(self.PaintPanel.IOData.next_data)
+        self.step_button.clicked.connect(self.PaintPanel.step_by_step)
+        self.output_button.clicked.connect(self.PaintPanel.IOData.output_data)
+        self.reload_output.clicked.connect(self.PaintPanel.IOData.read_output)
         self.next_data.setEnabled(False)
-
-
 
 def main():
     app = QtGui.QApplication(sys.argv)

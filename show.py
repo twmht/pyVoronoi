@@ -79,7 +79,7 @@ class IOData:
         f = open('point_output','w')
         f.write(str(len(self.painter._points))+'\n')
         for p in self.painter._points:
-            f.write(p+'\n')
+            f.write(repr(p)+'\n')
 
         f.write('0\n')
 
@@ -91,8 +91,6 @@ class IOData:
             f = open(filename,'w')
             f.write(self.painter.parent.output_info.text())
             f.close()
-
-
 
     def read_output(self):
         self.painter.drawDisplay.ClearCanvas()
